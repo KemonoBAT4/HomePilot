@@ -23,21 +23,24 @@ def wait_for_pairing(cfg: dict) -> dict:
 
     mdns_announce.stop_announce(zc, info)
     return load_config()
-
+# #enddef wait_for_pairing
 
 def main() -> None:
-    if "--reset-pairing" in sys.argv:
+    if ("--reset-pairing" in sys.argv):
         reset_pairing()
         print("Pairing resettato.")
+    # #endif
 
     cfg = load_config()
 
-    if not cfg["paired"]:
+    if (not cfg["paired"]):
         cfg = wait_for_pairing(cfg)
+    # #endif
 
     print(f"Accoppiato al server {cfg['server_url']}, avvio il polling...")
     checkin.run(cfg["server_url"], cfg["token"])
-
+# #enddef main
 
 if __name__ == "__main__":
     main()
+# #endif
