@@ -1,0 +1,18 @@
+# Python (server, agent)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+.env
+
+# PyInstaller
+build/
+dist/
+*.spec
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
