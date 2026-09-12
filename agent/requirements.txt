@@ -1,0 +1,3 @@
+requests>=2.31
+zeroconf>=0.132
+flask>=3.0
