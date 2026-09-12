@@ -6,12 +6,12 @@ services:
     # e sulla rete bridge di default di Docker il traffico multicast della LAN
     # non arriva dentro al container. Funziona su host Linux (es. Raspberry Pi,
     # mini PC, NAS con Docker) - non su Docker Desktop per Mac/Windows.
-    network_mode: host
+    # network_mode: host
+
     environment:
       POSTGRES_DB: homepilot
       POSTGRES_USER: homepilot
       POSTGRES_PASSWORD: ${DB_PASSWORD:-changeme}
-      PGPORT: 5432
     volumes:
       - db_data:/var/lib/postgresql/data
 
@@ -20,9 +20,10 @@ services:
     restart: unless-stopped
     depends_on:
       - db
-    network_mode: host
+    ports:
+      - 8000:8000
     environment:
-      DATABASE_URL: postgresql+psycopg2://homepilot:${DB_PASSWORD:-changeme}@localhost:5432/homepilot
+      DATABASE_URL: postgresql+psycopg2://homepilot:${DB_PASSWORD:-changeme}@db:5432/homepilot
 
 volumes:
   db_data:
