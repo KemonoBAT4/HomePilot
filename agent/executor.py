@@ -4,9 +4,18 @@ import subprocess
 import time
 
 def launch_apps(apps: list[dict]) -> None:
+    """
+    #### DESCRIPTION:
+    Launches the apps
+
+    #### PARAMETERS:
+    - `apps` (`list[dict]`): The apps to launch
+
+    #### RETURNS:
+    No return
+    """
 
     for app in apps:
-
         command = app["command"]
         args    = app.get("args", [])
 

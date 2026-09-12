@@ -1,12 +1,11 @@
 from flask import Flask, jsonify, request
-
+import typing
 from config import load_config, save_config
 
-app = Flask(__name__)
-_on_paired = None  # callback impostato da main.py
+app        : Flask                  = Flask(__name__)
+_on_paired : typing.Callable | None = None  # callback impostato da main.py
 
-
-def set_on_paired_callback(callback) -> None:
+def set_on_paired_callback(callback: typing.Callable) -> None:
     global _on_paired
     _on_paired = callback
 # #enddef set_on_paired_callback

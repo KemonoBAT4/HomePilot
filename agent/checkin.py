@@ -25,7 +25,7 @@ def run(server_url: str, token: str) -> None:
             resp = requests.get(f"{server_url}/agent/checkin", headers=headers, timeout=10)
             resp.raise_for_status()
             profile = resp.json().get("profile")
-            if profile:
+            if (profile is not None):
                 print(f"[checkin] avvio profilo '{profile['name']}'")
                 launch_apps(profile["apps"])
                 if profile.get("lock_after_launch"):
